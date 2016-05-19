@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title> Canvas | Practica 2 </title>
+		<link type="image/x-icon" href="./favicon.ico" rel="icon" />
+		<link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+		<script src="./bootstrap/js/jquery-2.2.3.js"></script>
+        <style>
+			canvas{
+				border: 1px solid grey;
+			}
+        </style>
+	</head>
+	<body>
+        <canvas id="canv" height="500" width="1250"></canvas>
+	</body>
+    <script>
+		function sound(src, auto) {
+			this.sound = document.createElement("audio");
+			this.sound.src = src;
+			if(auto){
+				this.sound.autoplay = true;
+				this.sound.loop = true;
+			}
+			document.body.appendChild(this.sound);
+			this.play = function(){
+				this.sound.play();
+			}
+			this.stop = function(){
+				this.sound.pause();
+			}
+		}
+	    var canv = document.getElementById("canv");
+	    var ctx = canv.getContext("2d");
+	    var game = new Image();
+		var title = new Image();
+		var unicorn = new Image();
+	    game.src = "fondo.png";
+		title.src = "title.png";
+		unicorn.src = "./unicorn.png"
+		var a = 1170;
+		var b = 1170;
+		var c = 1170;
+		var d = 1170;
+		var e = 1170;
+		var f = 1170;
+		var g = 1170;
+		var h = 1170;
+		var x = 0;
+		var cont = 0;
+		var xs = [67, 97, 162, 4];
+		var ys = [4, 4, 2, 4];
+		var alt = 400;
+		var pony = {}
+		var music = new sound("./music.mp3", true);
+		pony.salto = function(countD,alt){
+			ctx.drawImage(unicorn, xs[countD], ys[countD], 22, 20, 100, alt, 50, 43);
+		}
+		function Obstacle(obWidth, obHeight){
+			this.obHeight = obHeight;
+			this.obWidth = obWidth;
+		}
+		function titleScreen(){
+			ctx.clearRect(0, 0, 1250, 500);
+			ctx.drawImage(title, 0, 0, 422, 222, 0, 0, 1250, 500);
+		}
+		function pause(){
+			ctx.font = "15px Arial";
+			ctx.fillText("Pausa", 10, 30);
+			// if($(window).keypress())
+			// 	play();
+		}
+		var tube = new Obstacle(80, 76);
+		function jump(){
+			var wow = setInterval(function(){
+				if(alt>235){
+					alt-=1;
+				}
+			},2);
+			setTimeout(function(){
+				clearInterval(wow);
+			},450);
+		}
+		function putObstacles(){
+			if(x >= 165 && x <= 600){
+				ctx.fillStyle = "rgba(255,0,0,0.2)";
+				ctx.rect(a, 370, tube.obWidth, tube.obHeight);
+				ctx.fillRect(a, 370, tube.obWidth, tube.obHeight);
+				a -= 27;
+			}
+			if(x >= 325 && x <= 750){
+				ctx.fillStyle = "rgba(255,0,0,0.2)";
+				ctx.rect(b, 340, tube.obWidth, tube.obHeight + 37);
+				ctx.fillRect(b, 340, tube.obWidth, tube.obHeight + 37);
+				b -= 27;
+			}
+			if(x >= 455 && x <= 890){
+				ctx.fillStyle = "rgba(255,0,0,0.2)";
+				ctx.rect(c, 340, tube.obWidth, tube.obHeight + 37);
+				ctx.fillRect(c, 340, tube.obWidth, tube.obHeight + 37);
+				c -= 27;
+			}
+			if(x >= 820 && x <= 1250){
+				ctx.fillStyle = "rgba(255,0,0,0.2)";
+				ctx.rect(d, 440, tube.obWidth, tube.obHeight + 50);
+				ctx.fillRect(d, 440, tube.obWidth, tube.obHeight + 50);
+				d -= 27;
+			}
+			if(x >= 1090 && x <= 1540){
+				ctx.fillStyle = "rgba(255,0,0,0.2)";
+				ctx.rect(e, 440, tube.obWidth + 50, tube.obHeight + 50);
+				ctx.fillRect(e, 440, tube.obWidth + 50, tube.obHeight + 50);
+				e -= 27;
+			}
+			if(x >= 1685 && x <= 2130){
+				ctx.fillStyle = "rgba(255,0,0,0.2)";
+				ctx.rect(f, 340, tube.obWidth, tube.obHeight + 37);
+				ctx.fillRect(f, 340, tube.obWidth, tube.obHeight + 37);
+				f -= 27;
+			}
+			if(x >= 1850 && x <= 2270){
+				ctx.fillStyle = "rgba(255,0,0,0.2)";
+				ctx.rect(g, 340, tube.obWidth, tube.obHeight + 37);
+				ctx.fillRect(g, 340, tube.obWidth, tube.obHeight + 37);
+				g -= 27;
+			}
+			if(x >= 2170 && x <= 2620){
+				ctx.fillStyle = "rgba(255,0,0,0.2)";
+				ctx.rect(h, 440, tube.obWidth + 50, tube.obHeight + 50);
+				ctx.fillRect(h, 440, tube.obWidth + 50, tube.obHeight + 50);
+				h -= 27;
+			}
+		}
+		function play(){
+			var mainInterval = setInterval(function(){
+				if(x <= 2630){
+					x += 10;
+					ctx.clearRect(0, 0, 1250, 500);
+					ctx.drawImage(game, x, 0, 440, 225, 0, 0, 1250, 500);
+					if(alt<399)
+						alt += 19;
+					countD = cont % 4;
+					pony.salto(countD,alt);
+					cont++;
+					$(window).keydown(function(event){
+						if(event.keyCode == 38 || event.keyCode == 32)
+							jump();
+						if(event.keyCode == 13){
+							clearInterval(mainInterval);
+							pause();
+						}
+					});
+					putObstacles();
+				}
+				else{
+					var a = 1170;
+					var b = 1170;
+					var c = 1170;
+					var d = 1170;
+					var e = 1170;
+					var f = 1170;
+					var g = 1170;
+					var h = 1170;
+					x = 0;
+				}
+				// 	putObstacles();
+			}, 100);
+
+		}
+		window.onload = function(){
+			ctx.drawImage(game, 0, 0, 440, 225, 0, 0, 1250, 500);
+			titleScreen();
+			music.play;
+			$(window).click(function(){
+				// if(event.keyCode == 38)
+					play();
+			});
+		}
+    </script>
+</html>

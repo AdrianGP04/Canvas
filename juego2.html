@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title> Canvas | Practica 2 </title>
+		<link type="image/x-icon" href="./favicon.ico" rel="icon" />
+		<link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+		<script src="./bootstrap/js/jquery-2.2.3.js"></script>
+        <style>
+			canvas{
+				border: 1px solid grey;
+			}
+        </style>
+	</head>
+	<body>
+        <canvas id="canv" height="500" width="1250">
+        </canvas>
+	</body>
+    <script>
+    var canv = document.getElementById("canv");
+    var ctx = canv.getContext("2d");
+    var game = new Image();
+    game.src = "fondo.png";
+	var title = new Image();
+	title.src = "title.png";
+	var x = 0;
+	var a= 1170;
+	var b = 1170;
+	var c = 1170;
+	var d = 1170;
+	var e = 1170;
+	var f = 1170;
+	var g = 1170;
+	var h = 1170;
+	var i = 1170;
+	var j = 1170;
+	var k = 1170;
+	var l = 1170;
+	var m = 1170;
+	var n = 1170;
+	var o = 1170;
+	var p = 1170;
+	var q = 1170;
+	var r = 1170;
+	var s = 1170;
+	var t = 1170;
+	var u = 1170;
+	var v = 1170;
+	var w = 1170;
+	var y = 1170;
+	var z = 1170;
+	function Obstacle(obWidth, obHeight){
+		this.obHeight = obHeight;
+		this.obWidth = obWidth;
+	}
+	function titleScreen(){
+		ctx.clearRect(0, 0, 1250, 500);
+		ctx.drawImage(title, x, 0, 440, 225, 0, 0, 1250, 500);
+	}
+	var obj1 = new Obstacle(80, 76);
+	var obj2 = new Obstacle(80, 111);
+	var obj3 = new Obstacle(80,150);
+	var obj4 = new Obstacle(100,50);
+	var obj5= new Obstacle(42,32);
+	var obj6= new Obstacle(42,64);
+	var obj7= new Obstacle(42,98);
+	var obj8= new Obstacle(42,130);
+	function play(){
+		setInterval(function(){
+			if(x <= 2930){
+				x += 10;
+				ctx.clearRect(0, 0, 1250, 500);
+				ctx.drawImage(game, x, 0, 440, 225, 0, 0, 1250, 500);
+			}
+			if(x >= 20){
+				ctx.fillStyle = "rgba(255,0,0,0.0)";
+				ctx.rect(a, 370, obj1.obWidth, obj1.obHeight);
+				ctx.fillRect(a, 370, obj1.obWidth, obj1.obHeight);
+				a -= 27;
+
+				if(x >= 180){
+					ctx.fillStyle = "red";
+					ctx.rect(b, 340, obj2.obWidth, obj2.obHeight);
+					ctx.fillRect(b, 340, obj2.obWidth, obj2.obHeight);
+					b -= 27;
+
+					if(x >= 310){
+						ctx.fillStyle = "red";
+						ctx.rect(c, 300, obj3.obWidth, obj3.obHeight);
+						ctx.fillRect(c, 300, obj3.obWidth, obj3.obHeight);
+						c -= 27;
+
+						if(x >= 481){
+							ctx.fillStyle = "red";
+							ctx.rect(d, 300, obj3.obWidth, obj3.obHeight);
+							ctx.fillRect(d, 300, obj3.obWidth, obj3.obHeight);
+							d -= 27;
+
+							if(x >= 680){
+								ctx.fillStyle = "red";
+								ctx.rect(e, 445, obj4.obWidth, obj4.obHeight);
+								ctx.fillRect(e, 445, obj4.obWidth, obj4.obHeight);
+								e -= 27;
+
+								if(x >= 950){
+									ctx.fillStyle = "red";
+									ctx.rect(f, 445, obj4.obWidth, obj4.obHeight);
+									ctx.fillRect(f, 445, obj4.obWidth, obj4.obHeight);
+									f -= 27;
+
+									if(x >= 1718){
+										ctx.fillStyle = "red";
+										ctx.rect(g, 408, obj5.obWidth, obj5.obHeight);
+										ctx.fillRect(g, 410, obj5.obWidth, obj5.obHeight);
+										g -= 27;
+
+										if(x >= 1729){
+											ctx.fillStyle = "red";
+											ctx.rect(h, 376, obj6.obWidth, obj6.obHeight);
+											ctx.fillRect(h, 376, obj6.obWidth, obj6.obHeight);
+											h -= 27;
+
+											if(x >= 1740){
+												ctx.fillStyle = "red";
+												ctx.rect(i, 342, obj7.obWidth, obj7.obHeight);
+												ctx.fillRect(i, 342, obj7.obWidth, obj7.obHeight);
+												i -= 27;
+
+												if(x >= 1751){
+													ctx.fillStyle = "red";
+													ctx.rect(j, 310, obj8.obWidth, obj8.obHeight);
+													ctx.fillRect(j, 310, obj8.obWidth, obj8.obHeight);
+													j -= 27;
+
+													if(x >= 1815){
+														ctx.fillStyle = "red";
+														ctx.rect(k, 310,obj8.obWidth, obj8.obHeight);
+														ctx.fillRect(k, 310,obj8.obWidth, obj8.obHeight);
+														k -= 27;
+
+														if(x >= 1836){
+															ctx.fillStyle = "red";
+															ctx.rect(l, 342,obj7.obWidth, obj7.obHeight);
+															ctx.fillRect(l, 342,obj7.obWidth, obj7.obHeight);
+															l -= 27;
+
+															if(x >= 1857){
+																ctx.fillStyle = "red";
+																ctx.rect(m, 376,obj6.obWidth, obj6.obHeight);
+																ctx.fillRect(m, 376, obj6.obWidth, obj6.obHeight);
+																m -= 27;
+
+																if(x >= 1869){
+																	ctx.fillStyle = "red";
+																	ctx.rect(n, 408,obj5.obWidth, obj5.obHeight);
+																	ctx.fillRect(n, 408, obj5.obWidth, obj5.obHeight);
+																	n -= 27;
+
+																	if(x >= 1960){
+																		ctx.fillStyle = "red";
+																		ctx.rect(o, 408, obj5.obWidth, obj5.obHeight);
+																		ctx.fillRect(o, 410, obj5.obWidth, obj5.obHeight);
+																		o -= 27;
+
+																		if(x >= 1970){
+																			ctx.fillStyle = "red";
+																			ctx.rect(p, 376, obj6.obWidth, obj6.obHeight);
+																			ctx.fillRect(p, 376, obj6.obWidth, obj6.obHeight);
+																			p -= 27;
+
+																			if(x >= 1981){
+																				ctx.fillStyle = "red";
+																				ctx.rect(q, 342, obj7.obWidth, obj7.obHeight);
+																				ctx.fillRect(q, 342, obj7.obWidth, obj7.obHeight);
+																				q -= 27;
+
+																				if(x >= 1992){
+																					ctx.fillStyle = "red";
+																					ctx.rect(r, 310, obj8.obWidth, obj8.obHeight);
+																					ctx.fillRect(r, 310, obj8.obWidth, obj8.obHeight);
+																					r -= 27;
+
+																					if(x >= 2002){
+																						ctx.fillStyle = "red";
+																						ctx.rect(s, 310,obj8.obWidth, obj8.obHeight);
+																						ctx.fillRect(s, 310, obj8.obWidth, obj8.obHeight);
+																						s -= 27;
+
+																						if(x >= 2056){
+																							ctx.fillStyle = "red";
+																							ctx.rect(t, 310,obj8.obWidth, obj8.obHeight);
+																							ctx.fillRect(t, 310,obj8.obWidth, obj8.obHeight);
+																							t -= 27;
+
+																							if(x >= 2077){
+																								ctx.fillStyle = "red";
+																								ctx.rect(u, 342,obj7.obWidth, obj7.obHeight);
+																								ctx.fillRect(u, 342, obj7.obWidth, obj7.obHeight);
+																								u -= 27;
+
+																								if(x >= 2098){
+																									ctx.fillStyle = "red";
+																									ctx.rect(v, 376,obj6.obWidth, obj6.obHeight);
+																									ctx.fillRect(v, 376, obj6.obWidth, obj6.obHeight);
+																									v -= 27;
+
+																									if(x >= 2106){
+																										ctx.fillStyle = "red";
+																										ctx.rect(w, 408,obj5.obWidth, obj5.obHeight);
+																										ctx.fillRect(w, 408, obj5.obWidth, obj5.obHeight);
+																										w -= 27;
+
+																										if(x >= 2180){
+																											ctx.fillStyle = "red";
+																											ctx.rect(y, 370, obj1.obWidth, obj1.obHeight);
+																											ctx.fillRect(y, 370, obj1.obWidth, obj1.obHeight);
+																											y -= 27;
+
+																											if(x >= 2440){
+																												ctx.fillStyle = "red";
+																												ctx.rect(z, 370, obj1.obWidth, obj1.obHeight);
+																												ctx.fillRect(z, 370, obj1.obWidth, obj1.obHeight);
+																												z -= 27;
+																											}
+																										}
+																									}
+																								}
+																							}
+																						}
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}, 80);
+	}
+	window.onload = function(){
+		ctx.drawImage(game, 0, 0, 440, 225, 0, 0, 1250, 500);
+		// titleScreen();
+		play();
+	}
+
+    </script>
+</html>
